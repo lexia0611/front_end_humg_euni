@@ -1,0 +1,23 @@
+# This is a generated file; do not edit or check into version control.
+cloud_firestore=/Users/nguyenthang/.pub-cache/hosted/pub.dev/cloud_firestore-4.12.2/
+cloud_firestore_web=/Users/nguyenthang/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.8.3/
+emoji_picker_flutter=/Users/nguyenthang/.pub-cache/hosted/pub.dev/emoji_picker_flutter-1.6.3/
+file_picker=/Users/nguyenthang/.pub-cache/hosted/pub.dev/file_picker-6.1.1/
+firebase_core=/Users/nguyenthang/.pub-cache/hosted/pub.dev/firebase_core-2.21.0/
+firebase_core_web=/Users/nguyenthang/.pub-cache/hosted/pub.dev/firebase_core_web-2.8.1/
+firebase_messaging=/Users/nguyenthang/.pub-cache/hosted/pub.dev/firebase_messaging-14.7.3/
+firebase_messaging_web=/Users/nguyenthang/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.5.12/
+flutter_local_notifications=/Users/nguyenthang/.pub-cache/hosted/pub.dev/flutter_local_notifications-16.1.0/
+flutter_plugin_android_lifecycle=/Users/nguyenthang/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17/
+fluttertoast=/Users/nguyenthang/.pub-cache/hosted/pub.dev/fluttertoast-8.2.2/
+path_provider=/Users/nguyenthang/.pub-cache/hosted/pub.dev/path_provider-2.1.1/
+path_provider_android=/Users/nguyenthang/.pub-cache/hosted/pub.dev/path_provider_android-2.2.1/
+path_provider_foundation=/Users/nguyenthang/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.1/
+path_provider_linux=/Users/nguyenthang/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+path_provider_windows=/Users/nguyenthang/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1/
+shared_preferences=/Users/nguyenthang/.pub-cache/hosted/pub.dev/shared_preferences-2.2.2/
+shared_preferences_android=/Users/nguyenthang/.pub-cache/hosted/pub.dev/shared_preferences_android-2.2.1/
+shared_preferences_foundation=/Users/nguyenthang/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.4/
+shared_preferences_linux=/Users/nguyenthang/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.3.2/
+shared_preferences_web=/Users/nguyenthang/.pub-cache/hosted/pub.dev/shared_preferences_web-2.2.1/
+shared_preferences_windows=/Users/nguyenthang/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.3.2/

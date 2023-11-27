@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "873559090805",
+    "project_id": "social-learning-network-3ef18",
+    "storage_bucket": "social-learning-network-3ef18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873559090805:android:0abada9571e0dcd8dcfa3c",
+        "android_client_info": {
+          "package_name": "com.example.fe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD6hXQdnYs7XN4ewqjI-wYbUAIzOZFTUI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:fe/model/class.model.dart';
-import 'package:fe/provider/assigment.provider.dart';
+import 'package:fe/provider/assignment.provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'assgment.techer.cubit.state.dart';
@@ -22,7 +22,7 @@ class AssigmentTeacherCubit extends Cubit<AssigmentTeacherCubitState> {
     if (roles == "SINHVIEN") {
       isGV = false;
     }
-    var list = await AssigmentProvider.getList(classId: classModel.id ?? "", status: status);
+    var list = await AssignmentProvider.getList(classId: classModel.id ?? "", status: status);
     emit(state.copyWith(status: AssigmentStatus.success, listAssigment: list, isGV: isGV));
   }
 }

@@ -1,11 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:fe/model/assigment.model.dart';
-import 'package:fe/provider/assigment.provider.dart';
+import 'package:fe/model/assignment.model.dart';
+import 'package:fe/provider/assignment.provider.dart';
 import 'package:flutter/material.dart';
 
 class DeleteAssigment extends StatelessWidget {
-  final AssigmentModel assigmentModel;
+  final AssignmentModel assigmentModel;
   const DeleteAssigment({super.key, required this.assigmentModel});
 
   @override
@@ -45,7 +45,7 @@ class DeleteAssigment extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () async {
-              await AssigmentProvider.delete(assigmentModel.id ?? 0);
+              await AssignmentProvider.delete(assigmentModel.id ?? 0);
               Navigator.pop(context, true);
             },
             child: const Center(

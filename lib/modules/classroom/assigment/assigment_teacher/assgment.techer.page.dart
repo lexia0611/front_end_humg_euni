@@ -1,9 +1,6 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:animation_list/animation_list.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fe/app/widgets/button.not.click.multi.dart';
-import 'package:fe/model/assigment.model.dart';
+import 'package:fe/model/assignment.model.dart';
 import 'package:fe/model/class.model.dart';
 import 'package:fe/modules/classroom/assigment/assigment_teacher/view_assigment/view.assigment.cubit.dart';
 import 'package:fe/modules/classroom/assigment/assigment_teacher/view_assigment/view.assigment.dart';
@@ -55,10 +52,13 @@ class _AssigmentTeacherPageState extends State<AssigmentTeacherPage> {
                       style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                     ),
                     Container(
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(bottom: 15),
+                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(width: 2, color: Colors.grey)),
                       child: DropdownButtonHideUnderline(
-                        child: DropdownButton2(
+                        child: DropdownButton(
                           items: listStatus.entries.map((item) => DropdownMenuItem<int>(value: item.key, child: Text(item.value))).toList(),
                           value: statusQuiz,
                           onChanged: (value) {
@@ -106,8 +106,8 @@ class _AssigmentTeacherPageState extends State<AssigmentTeacherPage> {
                                   MaterialPageRoute(
                                     builder: (BuildContext context) => MultiBlocProvider(providers: [
                                       BlocProvider(
-                                        create: (context) => ViewAssigmentCubit(
-                                          assigmentModel: element,
+                                        create: (context) => ViewAssignmentCubit(
+                                          assignmentModel: element,
                                           classModel: widget.classModel,
                                         ),
                                       ),
@@ -143,7 +143,7 @@ class _AssigmentTeacherPageState extends State<AssigmentTeacherPage> {
                                             children: [
                                               Expanded(
                                                 child: Text(
-                                                  "Create: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(element.createTime ?? "").toLocal())}",
+                                                  "Created: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(element.createTime ?? "").toLocal())}",
                                                   overflow: TextOverflow.ellipsis,
                                                   style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                                                 ),
@@ -151,7 +151,7 @@ class _AssigmentTeacherPageState extends State<AssigmentTeacherPage> {
                                               const SizedBox(width: 10),
                                               Expanded(
                                                 child: Text(
-                                                  "Dueday: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(element.dueDay ?? "").toLocal())}",
+                                                  "Expired: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(element.dueDay ?? "").toLocal())}",
                                                   overflow: TextOverflow.ellipsis,
                                                   style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                                                 ),
@@ -180,7 +180,7 @@ class _AssigmentTeacherPageState extends State<AssigmentTeacherPage> {
                                                       builder: (BuildContext context) {
                                                         return UpdateAssigment(assigmentModel: element);
                                                       });
-                                                  if (response != null && response.runtimeType == AssigmentModel) {
+                                                  if (response != null && response.runtimeType == AssignmentModel) {
                                                     setState(() {
                                                       element = response;
                                                     });

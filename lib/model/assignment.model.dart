@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:fe/model/assigment.student.model.dart';
-class AssigmentModel {
+import 'package:fe/model/assignment.student.model.dart';
+class AssignmentModel {
   int? id;
   String? classId;
   String? title;
@@ -11,8 +11,8 @@ class AssigmentModel {
   String? createTime;
   String? dueDay;
   int? status;
-  AssigmentStudentModel? assignmentStudentModel;
-  AssigmentModel({
+  AssignmentStudentModel? assignmentStudentModel;
+  AssignmentModel({
     this.id,
     this.classId,
     this.title,
@@ -24,7 +24,7 @@ class AssigmentModel {
     this.assignmentStudentModel,
   });
 
-  AssigmentModel copyWith({
+  AssignmentModel copyWith({
     int? id,
     String? classId,
     String? title,
@@ -34,7 +34,7 @@ class AssigmentModel {
     String? dueDay,
     int? status,
   }) {
-    return AssigmentModel(
+    return AssignmentModel(
       id: id ?? this.id,
       classId: classId ?? this.classId,
       title: title ?? this.title,
@@ -58,8 +58,8 @@ class AssigmentModel {
     };
   }
 
-  factory AssigmentModel.fromMap(Map<String, dynamic> map) {
-    return AssigmentModel(
+  factory AssignmentModel.fromMap(Map<String, dynamic> map) {
+    return AssignmentModel(
       id: map['id'] != null ? map['id'] as int : null,
       classId: map['classId'] != null ? map['classId'] as String : null,
       title: map['title'] != null ? map['title'] as String : null,
@@ -73,7 +73,7 @@ class AssigmentModel {
 
   String toJson() => json.encode(toMap());
 
-  factory AssigmentModel.fromJson(String source) => AssigmentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AssignmentModel.fromJson(String source) => AssignmentModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -81,7 +81,7 @@ class AssigmentModel {
   }
 
   @override
-  bool operator ==(covariant AssigmentModel other) {
+  bool operator ==(covariant AssignmentModel other) {
     if (identical(this, other)) return true;
 
     return other.id == id && other.classId == classId && other.title == title && other.description == description && other.fileName == fileName && other.createTime == createTime && other.dueDay == dueDay && other.status == status;

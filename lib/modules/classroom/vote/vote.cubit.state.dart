@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:fe/model/vote.model.dart';
 import 'package:fe/model/vote.option.model.dart';
@@ -9,8 +8,9 @@ class VoteCubitState extends Equatable {
   final VoteModel? voteModel;
   final List<VoteOptionModel> listVoteOptionModel;
   final int countStudent;
-
+  final bool isTeacher;
   const VoteCubitState({
+    this.isTeacher=false,
     this.status = Status.initial,
     this.voteModel,
     this.selected,
@@ -19,6 +19,7 @@ class VoteCubitState extends Equatable {
   });
 
   VoteCubitState copyWith({
+    bool? isTeacher,
     Status? status,
     VoteModel? voteModel,
     int? selected,
@@ -26,6 +27,7 @@ class VoteCubitState extends Equatable {
     int? countStudent,
   }) {
     return VoteCubitState(
+      isTeacher: isTeacher ?? this.isTeacher,
       status: status ?? this.status,
       selected: selected ?? this.selected,
       voteModel: voteModel ?? this.voteModel,
@@ -35,7 +37,7 @@ class VoteCubitState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, listVoteOptionModel, listVoteOptionModel.length, voteModel, selected, countStudent];
+  List<Object?> get props => [status, listVoteOptionModel, listVoteOptionModel.length, voteModel, selected, countStudent, isTeacher];
 }
 
 enum Status { initial, loading, success, error }

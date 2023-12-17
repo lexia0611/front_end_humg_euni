@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:fe/model/sinh.vien.model.dart';
 
-class AssigmentStudentModel {
+class AssignmentStudentModel {
   int? id;
   int? assigmentId;
   //maSV
@@ -13,7 +13,7 @@ class AssigmentStudentModel {
   String? fileName;
   String? createTime;
   String? modifiedDate;
-  AssigmentStudentModel({
+  AssignmentStudentModel({
     this.id,
     this.assigmentId,
     this.username,
@@ -24,7 +24,7 @@ class AssigmentStudentModel {
     this.modifiedDate,
   });
 
-  AssigmentStudentModel copyWith({
+  AssignmentStudentModel copyWith({
     int? id,
     int? assigmentId,
     String? username,
@@ -34,7 +34,7 @@ class AssigmentStudentModel {
     String? createTime,
     String? modifiedDate,
   }) {
-    return AssigmentStudentModel(
+    return AssignmentStudentModel(
       id: id ?? this.id,
       assigmentId: assigmentId ?? this.assigmentId,
       username: username ?? this.username,
@@ -59,8 +59,8 @@ class AssigmentStudentModel {
     };
   }
 
-  factory AssigmentStudentModel.fromMap(Map<String, dynamic> map) {
-    return AssigmentStudentModel(
+  factory AssignmentStudentModel.fromMap(Map<String, dynamic> map) {
+    return AssignmentStudentModel(
       id: map['id'] != null ? map['id'] as int : null,
       assigmentId: map['assigmentId'] != null ? map['assigmentId'] as int : null,
       username: map['username'] != null ? map['username'] as String : null,
@@ -74,7 +74,7 @@ class AssigmentStudentModel {
 
   String toJson() => json.encode(toMap());
 
-  factory AssigmentStudentModel.fromJson(String source) => AssigmentStudentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AssignmentStudentModel.fromJson(String source) => AssignmentStudentModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -82,7 +82,7 @@ class AssigmentStudentModel {
   }
 
   @override
-  bool operator ==(covariant AssigmentStudentModel other) {
+  bool operator ==(covariant AssignmentStudentModel other) {
     if (identical(this, other)) return true;
   
     return 

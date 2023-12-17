@@ -142,7 +142,7 @@ class _AssigmentStudentPageState extends State<AssigmentStudentPage> {
                                             children: [
                                               Expanded(
                                                 child: Text(
-                                                  "Create: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(element.createTime ?? "").toLocal())}",
+                                                  "Created: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(element.createTime ?? "").toLocal())}",
                                                   overflow: TextOverflow.ellipsis,
                                                   style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                                                 ),
@@ -150,7 +150,7 @@ class _AssigmentStudentPageState extends State<AssigmentStudentPage> {
                                               const SizedBox(width: 10),
                                               Expanded(
                                                 child: Text(
-                                                  "Dueday: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(element.dueDay ?? "").toLocal())}",
+                                                  "Expired: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(element.dueDay ?? "").toLocal())}",
                                                   overflow: TextOverflow.ellipsis,
                                                   style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                                                 ),

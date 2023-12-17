@@ -16,7 +16,7 @@ class ViewAssigmentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ViewAssigmentCubit, ViewAssigmentCubitState>(
+    return BlocBuilder<ViewAssignmentCubit, ViewAssigmentCubitState>(
       builder: (context, state) {
         if (state.status == Status.loading) {
           return Scaffold(
@@ -88,7 +88,7 @@ class ViewAssigmentPage extends StatelessWidget {
                 Row(
                   children: [
                     SizedBox(width: 20),
-                    Expanded(child: Text("Create time", style: TextStyle(fontSize: 14, color: const Color.fromARGB(255, 58, 58, 58)))),
+                    Expanded(child: Text("Created time", style: TextStyle(fontSize: 14, color: const Color.fromARGB(255, 58, 58, 58)))),
                     SizedBox(width: 20),
                     Expanded(
                       flex: 3,
@@ -102,7 +102,7 @@ class ViewAssigmentPage extends StatelessWidget {
                 Row(
                   children: [
                     SizedBox(width: 20),
-                    Expanded(child: Text("Dueday", style: TextStyle(fontSize: 14, color: const Color.fromARGB(255, 58, 58, 58)))),
+                    Expanded(child: Text("Expired", style: TextStyle(fontSize: 14, color: const Color.fromARGB(255, 58, 58, 58)))),
                     SizedBox(width: 20),
                     Expanded(
                       flex: 3,

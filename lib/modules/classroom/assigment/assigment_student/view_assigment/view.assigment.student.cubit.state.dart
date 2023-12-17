@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:equatable/equatable.dart';
-import 'package:fe/model/assigment.model.dart';
+import 'package:fe/model/assignment.model.dart';
 
 class ViewAssigmentStudentCubitState extends Equatable {
   final Status status;
-  final AssigmentModel assigmentModel;
+  final AssignmentModel assigmentModel;
   final String fileName;
 
   const ViewAssigmentStudentCubitState({
@@ -16,7 +16,7 @@ class ViewAssigmentStudentCubitState extends Equatable {
 
   ViewAssigmentStudentCubitState copyWith({
     Status? status,
-    AssigmentModel? assigmentModel,
+    AssignmentModel? assigmentModel,
     String? fileName,
   }) {
     return ViewAssigmentStudentCubitState(

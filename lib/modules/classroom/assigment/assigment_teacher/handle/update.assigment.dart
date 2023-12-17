@@ -2,15 +2,15 @@
 
 import 'package:fe/app/widgets/pick.date.dart';
 import 'package:fe/app/widgets/textfiel.dart';
-import 'package:fe/model/assigment.model.dart';
-import 'package:fe/provider/assigment.provider.dart';
+import 'package:fe/model/assignment.model.dart';
+import 'package:fe/provider/assignment.provider.dart';
 import 'package:fe/provider/file.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 class UpdateAssigment extends StatefulWidget {
-  final AssigmentModel assigmentModel;
+  final AssignmentModel assigmentModel;
   const UpdateAssigment({super.key, required this.assigmentModel});
 
   @override
@@ -18,7 +18,7 @@ class UpdateAssigment extends StatefulWidget {
 }
 
 class _UpdateAssigmentState extends State<UpdateAssigment> {
-  AssigmentModel assigmentModel = AssigmentModel(status: 1);
+  AssignmentModel assigmentModel = AssignmentModel(status: 1);
   TextEditingController name = TextEditingController();
   TextEditingController description = TextEditingController();
   var date1;
@@ -188,7 +188,7 @@ class _UpdateAssigmentState extends State<UpdateAssigment> {
               if (name.text != "" && assigmentModel.dueDay != null) {
                 assigmentModel.title = name.text;
                 assigmentModel.description = description.text;
-                await AssigmentProvider.update(assigmentModel);
+                await AssignmentProvider.update(assigmentModel);
                 Navigator.pop(context, assigmentModel);
               }
             },

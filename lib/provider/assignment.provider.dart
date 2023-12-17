@@ -2,13 +2,13 @@
 
 import 'dart:convert';
 
-import 'package:fe/model/assigment.model.dart';
-import 'package:fe/model/assigment.student.model.dart';
+import 'package:fe/model/assignment.model.dart';
+import 'package:fe/model/assignment.student.model.dart';
 import 'package:fe/provider/session.provider.dart';
 import 'package:http/http.dart' as http;
 
-class AssigmentProvider {
-  AssigmentProvider._();
+class AssignmentProvider {
+  AssignmentProvider._();
 
   static Future<Map<String, String>> getHeader() async {
     Map<String, String> header = {
@@ -19,19 +19,19 @@ class AssigmentProvider {
   }
 
   // <<<< Get list >>>>
-  static Future<List<AssigmentModel>> getList({required String classId, int? status}) async {
+  static Future<List<AssignmentModel>> getList({required String classId, int? status}) async {
     String filterStatus = "";
     if (status != null) {
       filterStatus = " and status:$status";
     }
-    List<AssigmentModel> listData = [];
+    List<AssignmentModel> listData = [];
     try {
       var url = "$baseUrl/api/assigment/get/page?filter=classId:'$classId'$filterStatus&sort=status,desc&sort=dueDay";
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
         for (var element in bodyConvert['content']) {
-          AssigmentModel item = AssigmentModel.fromMap(element);
+          AssignmentModel item = AssignmentModel.fromMap(element);
           listData.add(item);
         }
       }
@@ -41,7 +41,7 @@ class AssigmentProvider {
     return listData;
   }
 
-  static Future<void> create(AssigmentModel assigmentModel) async {
+  static Future<void> create(AssignmentModel assigmentModel) async {
     try {
       Map<String, String> header = await getHeader();
       var url = "$baseUrl/api/assigment/post";
@@ -51,7 +51,7 @@ class AssigmentProvider {
     }
   }
 
-  static update(AssigmentModel assigmentModel) async {
+  static update(AssignmentModel assigmentModel) async {
     try {
       Map<String, String> header = await getHeader();
       var url = "$baseUrl/api/assigment/put/${assigmentModel.id}";
@@ -71,8 +71,8 @@ class AssigmentProvider {
     }
   }
 
-  static Future<AssigmentStudentModel?> getStudentFromAssigmentId({required int assigmentId, required String username}) async {
-    AssigmentStudentModel? assigmentStudentModel;
+  static Future<AssignmentStudentModel?> getStudentFromAssigmentId({required int assigmentId, required String username}) async {
+    AssignmentStudentModel? assigmentStudentModel;
     try {
       var url = "$baseUrl/api/assigment-student/get/page?filter=assigmentId:$assigmentId and username:'$username'";
       var response = await http.get(Uri.parse(url.toString()));
@@ -80,7 +80,7 @@ class AssigmentProvider {
         var bodyConvert = jsonDecode(response.body);
         if (bodyConvert['content'].runtimeType == List && bodyConvert['content'].isNotEmpty) {
           var item = bodyConvert['content'].first;
-          assigmentStudentModel = AssigmentStudentModel.fromMap(item);
+          assigmentStudentModel = AssignmentStudentModel.fromMap(item);
           print(assigmentStudentModel.toJson());
         }
       }
@@ -91,8 +91,8 @@ class AssigmentProvider {
     return assigmentStudentModel;
   }
 
-  static Future<AssigmentStudentModel?> sendAssigment({required int assigmentId, required String username, required String fileName}) async {
-    AssigmentStudentModel? assigmentStudentModel;
+  static Future<AssignmentStudentModel?> sendAssigment({required int assigmentId, required String username, required String fileName}) async {
+    AssignmentStudentModel? assigmentStudentModel;
     try {
       var urlPost = "$baseUrl/api/assigment-student/post";
       var body = {"assigmentId": assigmentId, "username": username, "fileName": fileName};
@@ -100,7 +100,7 @@ class AssigmentProvider {
       var response = await http.post(Uri.parse(urlPost.toString()), headers: header, body: json.encode(body));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
-        assigmentStudentModel = AssigmentStudentModel.fromMap(bodyConvert);
+        assigmentStudentModel = AssignmentStudentModel.fromMap(bodyConvert);
       }
     } catch (e) {
       print("Loi: $e");
@@ -109,7 +109,7 @@ class AssigmentProvider {
     return assigmentStudentModel;
   }
 
-  static Future<void> updateSendAssigment({required AssigmentStudentModel assigmentStudentModel}) async {
+  static Future<void> updateSendAssigment({required AssignmentStudentModel assigmentStudentModel}) async {
     try {
       var urlPost = "$baseUrl/api/assigment-student/put/${assigmentStudentModel.id ?? 0}";
       Map<String, String> header = await getHeader();

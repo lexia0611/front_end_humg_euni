@@ -13,6 +13,7 @@ class VoteCubit extends Cubit<VoteCubitState> {
     required this.classModel,
   }) : super(const VoteCubitState()) {
     getData();
+    getRole();
   }
 
   void getData() async {
@@ -43,6 +44,7 @@ class VoteCubit extends Cubit<VoteCubitState> {
   }
 
   void updateSelect(int index, int? value) async {
+    getRole();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String username = prefs.getString("username") ?? "";
     var voteOptionModelNew = state.listVoteOptionModel[index];
@@ -63,15 +65,13 @@ class VoteCubit extends Cubit<VoteCubitState> {
     getData();
   }
 
-  // Future<void> getListQuizTeacher({int? status}) async {
-  //   emit(state.copyWith(status: Status.loading));
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String? roles = prefs.getString("roles");
-  //   var isGV = true;
-  //   if (roles == "SINHVIEN") {
-  //     isGV = false;
-  //   }
-  //   var list = await QuizProvider.getList(classId: classModel.id ?? "");
-  //   emit(state.copyWith(status: Status.success, listQuizModel: list, isGV: isGV));
-  // }
+  Future<void> getRole() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? roles = prefs.getString("roles");
+    var isGV = true;
+    if (roles == "SINHVIEN") {
+      isGV = false;
+    }
+    emit(state.copyWith(isTeacher: isGV));
+  }
 }

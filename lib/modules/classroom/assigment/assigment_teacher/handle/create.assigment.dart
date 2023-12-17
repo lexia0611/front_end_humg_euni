@@ -2,9 +2,9 @@
 
 import 'package:fe/app/widgets/pick.date.dart';
 import 'package:fe/app/widgets/textfiel.dart';
-import 'package:fe/model/assigment.model.dart';
+import 'package:fe/model/assignment.model.dart';
 import 'package:fe/model/class.model.dart';
-import 'package:fe/provider/assigment.provider.dart';
+import 'package:fe/provider/assignment.provider.dart';
 import 'package:fe/provider/file.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -18,7 +18,7 @@ class CreateAssigment extends StatefulWidget {
 }
 
 class _CreateAssigmentState extends State<CreateAssigment> {
-  AssigmentModel assigmentModel = AssigmentModel(status: 1);
+  AssignmentModel assignmentModel = AssignmentModel(status: 1);
   TextEditingController name = TextEditingController();
   TextEditingController description = TextEditingController();
   var date1;
@@ -62,7 +62,7 @@ class _CreateAssigmentState extends State<CreateAssigment> {
                           children: [
                             Expanded(
                               child: Text(
-                                (assigmentModel.fileName != null) ? "File uploaded" : "Upload file",
+                                (assignmentModel.fileName != null) ? "File uploaded" : "Upload file",
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -71,7 +71,7 @@ class _CreateAssigmentState extends State<CreateAssigment> {
                                 onTap: () async {
                                   var fileName = await handleUploadFileAll();
                                   setState(() {
-                                    assigmentModel.fileName = fileName;
+                                    assignmentModel.fileName = fileName;
                                   });
                                 },
                                 child: Icon(
@@ -98,19 +98,19 @@ class _CreateAssigmentState extends State<CreateAssigment> {
                   timeDisplay: time1,
                   selectedDateFunction: (day) {
                     if (day == null) {
-                      assigmentModel.dueDay = null;
+                      assignmentModel.dueDay = null;
                     }
                   },
                   selectedTimeFunction: (time) {
                     if (time == null) {
-                      assigmentModel.dueDay = null;
+                      assignmentModel.dueDay = null;
                     }
                   },
                   getFullTime: (time) {
                     if (time != "") {
-                      assigmentModel.dueDay = time;
+                      assignmentModel.dueDay = time;
                     } else {
-                      assigmentModel.dueDay = null;
+                      assignmentModel.dueDay = null;
                     }
                   }),
             ],
@@ -146,11 +146,11 @@ class _CreateAssigmentState extends State<CreateAssigment> {
           ),
           child: InkWell(
             onTap: () async {
-              if (name.text != "" && assigmentModel.dueDay != null) {
-                assigmentModel.classId = widget.classModel.id ??"";
-                assigmentModel.title = name.text;
-                assigmentModel.description = description.text;
-                await AssigmentProvider.create(assigmentModel);
+              if (name.text != "" && assignmentModel.dueDay != null) {
+                assignmentModel.classId = widget.classModel.id ??"";
+                assignmentModel.title = name.text;
+                assignmentModel.description = description.text;
+                await AssignmentProvider.create(assignmentModel);
                 Navigator.pop(context, true);
               }
             },

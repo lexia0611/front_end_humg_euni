@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:equatable/equatable.dart';
-import 'package:fe/model/assigment.model.dart';
-import 'package:fe/model/assigment.student.model.dart';
+import 'package:fe/model/assignment.model.dart';
+import 'package:fe/model/assignment.student.model.dart';
 
 class ViewAssigmentCubitState extends Equatable {
   final Status status;
-  final List<AssigmentStudentModel> listAssigmentStudentModel;
-  final AssigmentModel assigmentModel;
+  final List<AssignmentStudentModel> listAssigmentStudentModel;
+  final AssignmentModel assigmentModel;
 
   const ViewAssigmentCubitState({
     this.status = Status.initial,
@@ -18,8 +18,8 @@ class ViewAssigmentCubitState extends Equatable {
   ViewAssigmentCubitState copyWith({
     Status? status,
     bool? isGV,
-    List<AssigmentStudentModel>? listAssigmentStudentModel,
-    AssigmentModel? assigmentModel,
+    List<AssignmentStudentModel>? listAssigmentStudentModel,
+    AssignmentModel? assigmentModel,
   }) {
     return ViewAssigmentCubitState(
       status: status ?? this.status,

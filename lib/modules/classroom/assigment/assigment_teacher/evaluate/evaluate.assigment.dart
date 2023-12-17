@@ -12,7 +12,7 @@ class EvaluateAssigmentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EvaluateAssigmentCubit, EvaluateAssigmentCubitState>(
+    return BlocBuilder<EvaluateAssigmentCubit, EvaluateAssignmentCubitState>(
       builder: (context, state) {
         if (state.status == Status.loading) {
           return Scaffold(
@@ -32,11 +32,11 @@ class EvaluateAssigmentPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${state.assigmentStudentModel.student?.ho_lot ?? ""} ${state.assigmentStudentModel.student?.ten ?? ""}",
+                    "${state.assignmentStudentModel.student?.ho_lot ?? ""} ${state.assignmentStudentModel.student?.ten ?? ""}",
                     style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    "Code: ${state.assigmentStudentModel.username}",
+                    "Code: ${state.assignmentStudentModel.username}",
                     style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w400),
                   ),
                 ],
@@ -65,11 +65,11 @@ class EvaluateAssigmentPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${state.assigmentStudentModel.student?.ho_lot ?? ""} ${state.assigmentStudentModel.student?.ten ?? ""}",
+                  "${state.assignmentStudentModel.student?.ho_lot ?? ""} ${state.assignmentStudentModel.student?.ten ?? ""}",
                   style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 Text(
-                  "Code: ${state.assigmentStudentModel.username}",
+                  "Code: ${state.assignmentStudentModel.username}",
                   style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w400),
                 ),
               ],
@@ -88,13 +88,13 @@ class EvaluateAssigmentPage extends StatelessWidget {
                     SizedBox(width: 20),
                     Expanded(
                       flex: 3,
-                      child: state.assigmentStudentModel.fileName != null
+                      child: state.assignmentStudentModel.fileName != null
                           ? InkWell(
                               onTap: () {
-                                downloadFile(context, state.assigmentStudentModel.fileName ?? "");
+                                downloadFile(context, state.assignmentStudentModel.fileName ?? "");
                               },
                               child: Text(
-                                state.assigmentStudentModel.fileName ?? "",
+                                state.assignmentStudentModel.fileName ?? "",
                                 style: TextStyle(color: Colors.blue),
                               ))
                           : SizedBox.shrink(),
@@ -102,7 +102,7 @@ class EvaluateAssigmentPage extends StatelessWidget {
                   ],
                 ),
                 Divider(),
-                (state.assigmentStudentModel.point == null)
+                (state.assignmentStudentModel.point == null)
                     ? Row(
                         children: [
                           SizedBox(width: 20),
@@ -111,7 +111,7 @@ class EvaluateAssigmentPage extends StatelessWidget {
                           Expanded(
                             flex: 3,
                             child: Text(
-                              state.assigmentStudentModel.modifiedDate != null ? DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(state.assigmentStudentModel.modifiedDate ?? "").toLocal()) : "",
+                              state.assignmentStudentModel.modifiedDate != null ? DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(state.assignmentStudentModel.modifiedDate ?? "").toLocal()) : "",
                             ),
                           )
                         ],
@@ -124,7 +124,7 @@ class EvaluateAssigmentPage extends StatelessWidget {
                           Expanded(
                             flex: 3,
                             child: Text(
-                              state.assigmentStudentModel.createTime != null ? DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(state.assigmentStudentModel.createTime ?? "").toLocal()) : "",
+                              state.assignmentStudentModel.createTime != null ? DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(state.assignmentStudentModel.createTime ?? "").toLocal()) : "",
                             ),
                           )
                         ],

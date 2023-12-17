@@ -1,35 +1,35 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:equatable/equatable.dart';
-import 'package:fe/model/assigment.student.model.dart';
+import 'package:fe/model/assignment.student.model.dart';
 
-class EvaluateAssigmentCubitState extends Equatable {
+class EvaluateAssignmentCubitState extends Equatable {
   final Status status;
-  final AssigmentStudentModel assigmentStudentModel;
+  final AssignmentStudentModel assignmentStudentModel;
   final bool showButton;
 
-  const EvaluateAssigmentCubitState({
+  const EvaluateAssignmentCubitState({
     this.status = Status.initial,
-    required this.assigmentStudentModel,
+    required this.assignmentStudentModel,
     this.showButton = false,
   });
 
-  EvaluateAssigmentCubitState copyWith({
+  EvaluateAssignmentCubitState copyWith({
     Status? status,
     bool? showButton,
-    AssigmentStudentModel? assigmentStudentModel,
+    AssignmentStudentModel? assignmentStudentModel,
   }) {
-    return EvaluateAssigmentCubitState(
+    return EvaluateAssignmentCubitState(
       status: status ?? this.status,
       showButton: showButton ?? this.showButton,
-      assigmentStudentModel: assigmentStudentModel ?? this.assigmentStudentModel,
+      assignmentStudentModel: assignmentStudentModel ?? this.assignmentStudentModel,
     );
   }
 
   @override
   List<Object> get props => [
         status,
-        assigmentStudentModel,
+        assignmentStudentModel,
         showButton,
       ];
 }

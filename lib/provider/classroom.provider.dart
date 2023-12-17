@@ -6,6 +6,8 @@ import 'package:fe/model/sinh.vien.model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../model/class.model.dart';
+
 class ClassroomProvider {
   ClassroomProvider._();
 
@@ -13,11 +15,10 @@ class ClassroomProvider {
     Map<String, String> header = {
       'Content-type': 'application/json',
     };
-
     return header;
   }
 
-  //Get sinh vieen lớp
+  //Get sinh vien lớp
   static Future<List<StudentModel>> getListStudent(String classId) async {
     List<StudentModel> listDataGet = [];
     try {
@@ -51,4 +52,31 @@ class ClassroomProvider {
     }
     return listDataGet;
   }
+
+
+  //Get list lo hoc
+  static Future<List<ClassModel>> getListClass(int hocKy, int loaidoiTuong) async {
+    List<ClassModel> listDataGet = [];
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var token = prefs.getString("accessToken");
+      var headers = {"Content-Type": "application/x-www-form-urlencoded", "Authorization": "Bearer $token"};
+      var data = {'hoc_ky': '$hocKy', 'loai_doi_tuong': '$loaidoiTuong'};
+      var url = Uri.parse("https://daotaodaihoc.humg.edu.vn/api/sch/w-locdstkbhockytheodoituong");
+      var response = await http.post(Uri.parse(url.toString()), headers: headers, body: data);
+      if (response.statusCode == 200) {
+        var bodyConvert = jsonDecode(response.body);
+        if (bodyConvert['result'] == true) {
+          for (var element in bodyConvert['data']['ds_nhom_to']) {
+            ClassModel item = ClassModel.fromMap(element);
+            listDataGet.add(item);
+          }
+        }
+      }
+    } catch (e) {
+      print("Loi $e");
+    }
+    return listDataGet;
+  }
+
 }

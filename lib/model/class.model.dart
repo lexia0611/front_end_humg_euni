@@ -60,7 +60,7 @@ class ClassModel {
 
   factory ClassModel.fromMap(Map<String, dynamic> map) {
     return ClassModel(
-      id: map['id'] != null ? map['id'] as String : null,
+      id: map['id_to_hoc'] != null ? map['id_to_hoc'] as String : null,
       tenMon: map['ten_mon'] != null ? map['ten_mon'] as String : null,
       nhomTo: map['nhom_to'] != null ? map['nhom_to'] as String : null,
       tkb: map['tkb'] != null ? map['tkb'] as String : null,

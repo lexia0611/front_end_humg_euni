@@ -7,28 +7,9 @@ import 'package:fe/provider/session.provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:file_picker/file_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/services.dart';
 
-Future<String?> handleUploadFile() async {
-  String? fileName;
-  FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.image, allowMultiple: true);
-  if (result != null) {
-    try {
-      for (var element in result.files) {
-        String path = element.path ?? "";
-        var fileNameUpload = await uploadFile(File(path));
-        if (fileNameUpload != null) {
-          if (fileName == null) {
-            fileName = fileNameUpload;
-          } else {
-            fileName += ",$fileNameUpload";
-          }
-        }
-      }
-    } catch (e) {}
-  } else {}
 
-  return fileName;
-}
 
 Future<String?> handleUploadFileAll() async {
   String? fileName;
@@ -100,7 +81,7 @@ Future<void> downloadFile(BuildContext context, String fileName) async {
       await file.writeAsBytes(response.bodyBytes);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Đã tải file về: $filePath'),
+          content: Text('Đã tải file về tại $filePath'),
           duration: const Duration(seconds: 2), // Adjust the duration as needed
         ),
       );
@@ -109,3 +90,24 @@ Future<void> downloadFile(BuildContext context, String fileName) async {
     print("error: $e");
   }
 }
+Future<void> copyFile(BuildContext context, String fileName) async {
+  var url="$baseUrl/api/files/$fileName";
+  void copyToClipboard(String text) {
+    Clipboard.setData(ClipboardData(text: text));
+  }
+  try {
+    final response = await http.get(Uri.parse("$baseUrl/api/files/$fileName"));
+    if (response.statusCode == 200) {
+      copyToClipboard(url);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Đã copy link vào Clipboard !'),
+          duration: Duration(seconds: 2), // Adjust the duration as needed
+        ),
+      );
+    }
+  } catch (e) {
+    print("error: $e");
+  }
+}
+

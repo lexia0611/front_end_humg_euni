@@ -4,6 +4,7 @@ import 'package:fe/app/widgets/will.pop.scope.dart';
 import 'package:fe/model/class.model.dart';
 import 'package:fe/modules/classroom/classroom.screen.dart';
 import 'package:fe/modules/login/ui/login.screen.dart';
+// import 'package:fe/provider/classroom.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,8 +28,24 @@ class _ListClassScreenState extends State<ListClassScreen> {
       gv: "T.T.Chuyên",
       phong: "HNBG301",
     ),
+    ClassModel(
+      id: "-6903517977552750442",
+      tenMon: "Phát triển ứng dụng cho thiết bị di động",
+      nhomTo: "01",
+      tkb: "08/02/20  28/03/20",
+      tuGio: "06:45",
+      denGio: "08:45",
+      gv: "T.T.Chuyên",
+      phong: "HNBG301",
+    ),
   ];
-  getData() async {}
+  //
+  getData() async {
+    // var listClassNew = await ClassroomProvider.getListClass(20191, 1); //
+    // setState(() {
+    //   listClass = listClassNew;
+    // });
+  }
   @override
   void initState() {
     super.initState();

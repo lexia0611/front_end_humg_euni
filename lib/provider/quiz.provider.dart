@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 import 'package:fe/model/question.quiz.model.dart';
-import 'package:fe/model/quiz.anser.model.dart';
+import 'package:fe/model/quiz.answer.model.dart';
 import 'package:fe/model/quiz.model.dart';
 import 'package:fe/provider/session.provider.dart';
 import 'package:http/http.dart' as http;
@@ -61,8 +61,8 @@ class QuizProvider {
         var bodyConvert = jsonDecode(response.body);
         for (var element in bodyConvert['content']) {
           QuizModel item = QuizModel.fromMap(element);
-          var anser = await getAnser(idQuiz: item.id ?? 0, username: username ?? "");
-          item.quizAnserModel = anser;
+          var answer = await getAnser(idQuiz: item.id ?? 0, username: username ?? "");
+          item.quizAnserModel = answer;
           listData.add(item);
         }
       }
@@ -167,7 +167,7 @@ class QuizProvider {
     return listData;
   }
 
-//get anser
+//get answer
   static Future<QuizAnserModel?> getAnser({required int idQuiz, required String username}) async {
     QuizAnserModel? listData;
     try {

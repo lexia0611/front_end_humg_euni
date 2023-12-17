@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:fe/model/class.model.dart';
-import 'package:fe/modules/classroom/assigment/assigment_student/asigment.student.cubit.dart';
-import 'package:fe/modules/classroom/assigment/assigment_student/asigment.student.page.dart';
+import 'package:fe/modules/classroom/assigment/assigment_student/assigment.student.cubit.dart';
+import 'package:fe/modules/classroom/assigment/assigment_student/assigment.student.page.dart';
 import 'package:fe/modules/classroom/assigment/assigment_teacher/assgment.techer.cubit.dart';
 import 'package:fe/modules/classroom/chat/chat.cubit.dart';
 import 'package:fe/modules/classroom/chat/chat.page.dart';

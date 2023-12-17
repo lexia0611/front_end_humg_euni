@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:fe/app/constant/convert.dart';
-import 'package:fe/model/quiz.anser.model.dart';
+import 'package:fe/model/quiz.answer.model.dart';
 import 'package:fe/model/quiz.model.dart';
 import 'package:fe/provider/quiz.provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'anser.quiz.cubit.state.dart';
+import 'answer.quiz.cubit.state.dart';
 
 class AnserQuizCubit extends Cubit<AnserQuizCubitState> {
   final QuizModel quizModel;

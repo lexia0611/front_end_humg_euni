@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:fe/model/quiz.model.dart';
-import 'package:fe/modules/classroom/quiz/quiz_teacher/viewquiz/view.anser.dart';
+import 'package:fe/modules/classroom/quiz/quiz_teacher/viewquiz/view.answer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -91,7 +91,7 @@ class _ViewQuizPageState extends State<ViewQuizPage> with SingleTickerProviderSt
                               color: Colors.white,
                             ),
                             child: Text(
-                              "Anser",
+                              "Answer",
                               style: TextStyle(fontSize: 12),
                             )),
                       ),
@@ -112,7 +112,7 @@ class _ViewQuizPageState extends State<ViewQuizPage> with SingleTickerProviderSt
                   ),
                   Expanded(
                     child: TabBarView(physics: const NeverScrollableScrollPhysics(), children: const [
-                      ViewAnser(),
+                      ViewAnswer(),
                       ViewQuestion(),
                     ]),
                   ),

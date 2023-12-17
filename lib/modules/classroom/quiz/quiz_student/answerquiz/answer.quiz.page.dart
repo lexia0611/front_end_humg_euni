@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:fe/app/widgets/button.not.click.multi.dart';
 import 'package:fe/app/widgets/toast.dart';
-import 'package:fe/modules/classroom/quiz/quiz_student/anserquiz/anser.quiz.cubit.dart';
+import 'package:fe/modules/classroom/quiz/quiz_student/answerquiz/answer.quiz.cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import 'anser.quiz.cubit.state.dart';
+import 'answer.quiz.cubit.state.dart';
 
 class AnserQuizPage extends StatelessWidget {
   const AnserQuizPage({super.key});

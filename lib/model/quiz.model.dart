@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:fe/model/quiz.anser.model.dart';
+import 'package:fe/model/quiz.answer.model.dart';
 
 class QuizModel {
   int? id;

@@ -3,12 +3,12 @@
 import 'package:animation_list/animation_list.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fe/app/widgets/button.not.click.multi.dart';
-import 'package:fe/modules/classroom/assigment/assigment_student/asigment.student.cubit.dart';
+import 'package:fe/modules/classroom/assigment/assigment_student/assigment.student.cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import 'asigment.student.cubit.state.dart';
+import 'assigment.student.cubit.state.dart';
 import 'view_assigment/view.assigment.student.cubit.dart';
 import 'view_assigment/view.assigment.student.page.dart';
 

@@ -4,7 +4,7 @@ import 'package:fe/provider/assigment.provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'asigment.student.cubit.state.dart';
+import 'assigment.student.cubit.state.dart';
 
 class AssigmentStudentCubit extends Cubit<AssigmentStudentCubitState> {
   final ClassModel classModel;

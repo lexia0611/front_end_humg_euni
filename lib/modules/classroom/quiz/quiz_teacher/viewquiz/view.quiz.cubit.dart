@@ -1,5 +1,5 @@
 import 'package:fe/app/constant/convert.dart';
-import 'package:fe/model/quiz.anser.model.dart';
+import 'package:fe/model/quiz.answer.model.dart';
 import 'package:fe/model/quiz.model.dart';
 import 'package:fe/model/sinh.vien.model.dart';
 import 'package:fe/provider/classroom.provider.dart';

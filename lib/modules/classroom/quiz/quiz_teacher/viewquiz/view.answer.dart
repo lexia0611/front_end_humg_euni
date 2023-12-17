@@ -7,14 +7,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'view.quiz.cubit.dart';
 import 'view.quiz.cubit.state.dart';
 
-class ViewAnser extends StatefulWidget {
-  const ViewAnser({super.key});
+class ViewAnswer extends StatefulWidget {
+  const ViewAnswer({super.key});
 
   @override
-  State<ViewAnser> createState() => _ViewAnserState();
+  State<ViewAnswer> createState() => _ViewAnswerState();
 }
 
-class _ViewAnserState extends State<ViewAnser> with AutomaticKeepAliveClientMixin {
+class _ViewAnswerState extends State<ViewAnswer> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 

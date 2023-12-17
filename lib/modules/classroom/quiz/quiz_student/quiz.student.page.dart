@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import 'anserquiz/anser.quiz.cubit.dart';
-import 'anserquiz/anser.quiz.page.dart';
+import 'answerquiz/answer.quiz.cubit.dart';
+import 'answerquiz/answer.quiz.page.dart';
 import 'quiz.student.cubit.dart';
 import 'quiz.student.cubit.state.dart';
 

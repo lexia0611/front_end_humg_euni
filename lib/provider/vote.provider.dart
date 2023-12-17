@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 import 'package:fe/model/question.quiz.model.dart';
-import 'package:fe/model/quiz.anser.model.dart';
+import 'package:fe/model/quiz.answer.model.dart';
 import 'package:fe/model/quiz.model.dart';
 import 'package:fe/model/vote.model.dart';
 import 'package:fe/model/vote.option.model.dart';

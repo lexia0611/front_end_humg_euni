@@ -47,12 +47,6 @@ class ListChatCubit extends Cubit<ListLoadState<MessageModel>> {
     emit(state.copyWith(list: list, status: ListLoadStatus.success));
   }
 
-  void copy(MessageModel messageModel)
-  {
-    emit(state.copyWith(status: ListLoadStatus.loading));
-
-  }
-
   Future<void> getListComment() async {
     var listChat = await ChatProvider().getMessAll(classModel.id ?? "", true);
     emit(state.copyWith(list: listChat));

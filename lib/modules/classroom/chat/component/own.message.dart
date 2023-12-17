@@ -89,9 +89,8 @@ class OwnMessage extends StatelessWidget {
             child: InfoMessage(message),
           ),
         ),
-        // ClipOval(child: SizedBox(width: 46, height: 46, child: AvarNormal(avar: message.createUserImage ?? ''))),
         const SizedBox(
-          width: 10,
+          width: 0,
         )
       ],
     );

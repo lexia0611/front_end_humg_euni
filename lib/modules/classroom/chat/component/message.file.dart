@@ -1,7 +1,7 @@
 import 'package:fe/model/message.model.dart';
 import 'package:fe/provider/file.provider.dart';
 import 'package:flutter/material.dart';
-
+import 'package:popover/popover.dart';
 import 'info.message.dart';
 
 class MessageFile extends StatelessWidget {
@@ -16,6 +16,27 @@ class MessageFile extends StatelessWidget {
       child: InkWell(
         onTap: () {
           downloadFile(context, message.fileName ?? "");
+        },
+        onLongPress: () {
+          showPopover(
+            radius: 10,
+            context: context,
+            bodyBuilder: (context) => ListItems(
+              handleCopy: (value) {
+                if (value != null && value == true) {
+                  copyFile(context, message.fileName ?? "");
+                }
+              },
+              message: message,
+            ),
+            onPop: () {},
+            direction: PopoverDirection.bottom,
+            width: 200,
+            // height: message.type == "text" ? 135 : 65,
+            // height: 300,
+            arrowHeight: 15,
+            arrowWidth: 30,
+          );
         },
         child: Container(
           padding: const EdgeInsets.all(10),
@@ -55,6 +76,43 @@ class MessageFile extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ListItems extends StatelessWidget {
+  final Function handleCopy;
+  final MessageModel message;
+  const ListItems({Key? key, required this.message, required this.handleCopy})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+      child: ListView(
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(10),
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.pop(context);
+              handleCopy(true);
+            },
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(10)),
+              child: const Center(
+                  child: Text('Copy Link',
+                      style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500))),
+            ),
+          ),
+        ],
       ),
     );
   }

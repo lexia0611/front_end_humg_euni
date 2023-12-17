@@ -100,7 +100,7 @@ Future<void> copyFile(BuildContext context, String fileName) async {
     if (response.statusCode == 200) {
       copyToClipboard(url);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text('Đã copy link vào Clipboard !'),
           duration: Duration(seconds: 2), // Adjust the duration as needed
         ),

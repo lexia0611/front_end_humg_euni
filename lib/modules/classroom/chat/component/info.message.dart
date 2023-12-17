@@ -56,7 +56,7 @@ class DecorationAnotherNormal extends StatelessWidget {
             const SizedBox(width: 15),
             Text(
               name,
-              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
             ),
           ],
         ),
@@ -125,7 +125,7 @@ class DecorationOwnNormal extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 formatDate(time),
-                style: const TextStyle(color: Colors.black, fontSize: 11),
+                style: const TextStyle(color: Colors.black, fontSize: 13),
               )
             ],
           ),

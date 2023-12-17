@@ -18,7 +18,7 @@ class MessageMess extends StatelessWidget {
     }
     return Text(
       message.message ?? '',
-      style: TextStyle(color: const Color(0xFF363636), height: 1.2, fontSize: 12, fontWeight: FontWeight.w500),
+      style: TextStyle(color: const Color(0xFF363636), height: 1.2, fontSize: 14, fontWeight: FontWeight.w500),
     );
   }
 }

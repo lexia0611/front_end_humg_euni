@@ -18,17 +18,17 @@ class ViewQuizCubit extends Cubit<ViewQuizCubitState> {
   Future<void> getDate({int? status}) async {
     emit(state.copyWith(status: Status.loading));
     var listQuestion = await QuizProvider.getListQuestion(idQuiz: quizModel.id ?? 0);
-    List<QuizAnserModel?> listAnser = [];
+    List<QuizAnswerModel?> listAnswer = [];
     List<StudentModel> listStudent = await ClassroomProvider.getListStudent(quizModel.classId ?? "");
     for (var element in listStudent) {
-      var anser = await QuizProvider.getAnser(idQuiz: quizModel.id ?? 0, username: element.ma_sinh_vien ?? "");
-      if (anser != null) {
-        var anserNew = anser.copyWith(anserConvert: stringToListInt(anser.anser ?? ""));
-        listAnser.add(anserNew);
+      var answer = await QuizProvider.getAnswer(idQuiz: quizModel.id ?? 0, username: element.ma_sinh_vien ?? "");
+      if (answer != null) {
+        var answerNew = answer.copyWith(answerConvert: stringToListInt(answer.answer ?? ""));
+        listAnswer.add(answerNew);
       } else {
-        listAnser.add(null);
+        listAnswer.add(null);
       }
     }
-    emit(state.copyWith(status: Status.success, listQuestion: listQuestion, listAnser: listAnser, listStudent: listStudent));
+    emit(state.copyWith(status: Status.success, listQuestion: listQuestion, listAnswer: listAnswer, listStudent: listStudent));
   }
 }

@@ -1,6 +1,6 @@
 import 'package:animation_list/animation_list.dart';
 import 'package:fe/app/widgets/will.pop.scope.dart';
-import 'package:fe/model/class.model.dart';
+import 'package:fe/app/data_fake/classroom_data.dart';
 import 'package:fe/modules/classroom/classroom.screen.dart';
 import 'package:fe/modules/login/ui/login.screen.dart';
 import 'package:flutter/material.dart';
@@ -16,38 +16,7 @@ class ListClassScreen extends StatefulWidget {
 }
 
 class _ListClassScreenState extends State<ListClassScreen> {
-  List<ClassModel> listClass = [
-    ClassModel(
-      id: "-6903517977552750442",
-      tenMon: "Phát triển ứng dụng cho thiết bị di động",
-      nhomTo: "01",
-      tkb: "08/02/20  28/03/20",
-      tuGio: "06:45",
-      denGio: "08:45",
-      gv: "T.T.Chuyên",
-      phong: "HNBG301",
-    ),
-    ClassModel(
-      id: "-6903517977552750442",
-      tenMon: "Logic Đại Cương",
-      nhomTo: "01",
-      tkb: "08/02/20  28/03/20",
-      tuGio: "06:45",
-      denGio: "08:45",
-      gv: "T.T.Chuyên",
-      phong: "HNBG309",
-    ),
-    ClassModel(
-      id: "-6903517977552750442",
-      tenMon: "Giải Tích 1",
-      nhomTo: "01",
-      tkb: "08/02/20  28/03/20",
-      tuGio: "06:45",
-      denGio: "08:45",
-      gv: "T.T.Chuyên",
-      phong: "HNBG201",
-    ),
-  ];
+
   SortOption _sortOption = SortOption.tenMon;
   getData() async {
     // var listClassNew = await ClassroomProvider.getListClass(20191, 1); //

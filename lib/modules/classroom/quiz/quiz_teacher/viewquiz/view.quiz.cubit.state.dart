@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:equatable/equatable.dart';
 import 'package:fe/model/question.quiz.model.dart';
 import 'package:fe/model/quiz.answer.model.dart';
@@ -11,14 +9,14 @@ class ViewQuizCubitState extends Equatable {
   final QuizModel quizModel;
   final List<QuestionQuizModel> listQuestion;
   final List<StudentModel> listStudent;
-  final List<QuizAnserModel?> listAnser;
+  final List<QuizAnswerModel?> listAnswer;
 
   const ViewQuizCubitState({
     this.status = Status.initial,
     required this.quizModel,
     this.listQuestion = const [],
     this.listStudent = const [],
-    this.listAnser = const [],
+    this.listAnswer = const [],
   });
 
   ViewQuizCubitState copyWith({
@@ -26,19 +24,19 @@ class ViewQuizCubitState extends Equatable {
     QuizModel? quizModel,
     List<QuestionQuizModel>? listQuestion,
     List<StudentModel>? listStudent,
-    List<QuizAnserModel?>? listAnser,
+    List<QuizAnswerModel?>? listAnswer,
   }) {
     return ViewQuizCubitState(
       status: status ?? this.status,
       quizModel: quizModel ?? this.quizModel,
       listQuestion: listQuestion ?? this.listQuestion,
       listStudent: listStudent ?? this.listStudent,
-      listAnser: listAnser ?? this.listAnser,
+      listAnswer: listAnswer ?? this.listAnswer,
     );
   }
 
   @override
-  List<Object> get props => [status, listAnser, listAnser.length, quizModel, listQuestion, listQuestion.length, listStudent, listStudent.length];
+  List<Object> get props => [status, listAnswer, listAnswer.length, quizModel, listQuestion, listQuestion.length, listStudent, listStudent.length];
 }
 
 enum Status { initial, loading, success, error }

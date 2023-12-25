@@ -5,7 +5,7 @@ import 'package:fe/model/sinh.vien.model.dart';
 
 class AssignmentStudentModel {
   int? id;
-  int? assigmentId;
+  int? assignmentId;
   //maSV
   String? username;
   StudentModel? student;
@@ -15,7 +15,7 @@ class AssignmentStudentModel {
   String? modifiedDate;
   AssignmentStudentModel({
     this.id,
-    this.assigmentId,
+    this.assignmentId,
     this.username,
     this.student,
     this.point,
@@ -26,7 +26,7 @@ class AssignmentStudentModel {
 
   AssignmentStudentModel copyWith({
     int? id,
-    int? assigmentId,
+    int? assignmentId,
     String? username,
     StudentModel? student,
     int? point,
@@ -36,7 +36,7 @@ class AssignmentStudentModel {
   }) {
     return AssignmentStudentModel(
       id: id ?? this.id,
-      assigmentId: assigmentId ?? this.assigmentId,
+      assignmentId: assignmentId ?? this.assignmentId,
       username: username ?? this.username,
       student: student ?? this.student,
       point: point ?? this.point,
@@ -49,7 +49,7 @@ class AssignmentStudentModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'assigmentId': assigmentId,
+      'assigmentId': assignmentId,
       'username': username,
       'student': student?.toMap(),
       'point': point,
@@ -62,7 +62,7 @@ class AssignmentStudentModel {
   factory AssignmentStudentModel.fromMap(Map<String, dynamic> map) {
     return AssignmentStudentModel(
       id: map['id'] != null ? map['id'] as int : null,
-      assigmentId: map['assigmentId'] != null ? map['assigmentId'] as int : null,
+      assignmentId: map['assigmentId'] != null ? map['assigmentId'] as int : null,
       username: map['username'] != null ? map['username'] as String : null,
       student: map['student'] != null ? StudentModel.fromMap(map['student'] as Map<String,dynamic>) : null,
       point: map['point'] != null ? map['point'] as int : null,
@@ -78,7 +78,7 @@ class AssignmentStudentModel {
 
   @override
   String toString() {
-    return 'AssigmentStudentModel(id: $id, assigmentId: $assigmentId, username: $username, student: $student, point: $point, fileName: $fileName, createTime: $createTime, modifiedDate: $modifiedDate)';
+    return 'AssignmentStudentModel(id: $id, assigmentId: $assignmentId, username: $username, student: $student, point: $point, fileName: $fileName, createTime: $createTime, modifiedDate: $modifiedDate)';
   }
 
   @override
@@ -87,7 +87,7 @@ class AssignmentStudentModel {
   
     return 
       other.id == id &&
-      other.assigmentId == assigmentId &&
+      other.assignmentId == assignmentId &&
       other.username == username &&
       other.student == student &&
       other.point == point &&
@@ -99,7 +99,7 @@ class AssignmentStudentModel {
   @override
   int get hashCode {
     return id.hashCode ^
-      assigmentId.hashCode ^
+      assignmentId.hashCode ^
       username.hashCode ^
       student.hashCode ^
       point.hashCode ^

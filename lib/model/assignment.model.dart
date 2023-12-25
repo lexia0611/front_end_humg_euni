@@ -77,7 +77,7 @@ class AssignmentModel {
 
   @override
   String toString() {
-    return 'AssigmentModel(id: $id, classId: $classId, title: $title, description: $description, fileName: $fileName, createTime: $createTime, dueDay: $dueDay, status: $status)';
+    return 'AssignmentModel(id: $id, classId: $classId, title: $title, description: $description, fileName: $fileName, createTime: $createTime, dueDay: $dueDay, status: $status)';
   }
 
   @override

@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import 'answerquiz/answer.quiz.cubit.dart';
-import 'answerquiz/answer.quiz.page.dart';
+import 'answer_quiz/answer.quiz.cubit.dart';
+import 'answer_quiz/answer.quiz.page.dart';
 import 'quiz.student.cubit.dart';
 import 'quiz.student.cubit.state.dart';
 
@@ -99,11 +99,11 @@ class _QuizStudentPageState extends State<QuizStudentPage> {
                                   MaterialPageRoute(
                                     builder: (BuildContext context) => MultiBlocProvider(providers: [
                                       BlocProvider(
-                                        create: (context) => AnserQuizCubit(
+                                        create: (context) => AnswerQuizCubit(
                                           quizModel: element,
                                         ),
                                       ),
-                                    ], child: const AnserQuizPage()),
+                                    ], child: const AnswerQuizPage()),
                                   ),
                                 );
                                 // if (response != null) {
@@ -137,7 +137,7 @@ class _QuizStudentPageState extends State<QuizStudentPage> {
                                               const SizedBox(width: 10),
                                               Expanded(
                                                 child: Text(
-                                                  (element.quizAnserModel?.point != null) ? "Point: ${element.quizAnserModel?.point}" : "",
+                                                  (element.quizAnswerModel?.point != null) ? "Point: ${element.quizAnswerModel?.point}" : "",
                                                   overflow: TextOverflow.ellipsis,
                                                   style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
                                                 ),

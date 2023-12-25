@@ -25,7 +25,7 @@ class GroupProvider {
     }
     List<GroupModel> listData = [];
     try {
-      var url = "$baseUrl/api/group/get/page?filter=classId:'$classId'$filterStatus";
+      var url = "$backendURL/api/group/get/page?filter=classId:'$classId'$filterStatus";
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
@@ -45,7 +45,7 @@ class GroupProvider {
   static Future<void> createGroup(GroupModel groupModel) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/group/post";
+      var url = "$backendURL/api/group/post";
       await http.post(Uri.parse(url.toString()), headers: header, body: groupModel.toJson());
     } catch (e) {
       print("Loi: $e");
@@ -55,7 +55,7 @@ class GroupProvider {
   static Future<void> editGroup(GroupModel groupModel) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/group/put/${groupModel.id}";
+      var url = "$backendURL/api/group/put/${groupModel.id}";
       await http.put(Uri.parse(url.toString()), headers: header, body: groupModel.toJson());
     } catch (e) {
       print("Loi: $e");
@@ -65,7 +65,7 @@ class GroupProvider {
   static Future<void> deleteGroup(int idGroup) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/group/del/$idGroup";
+      var url = "$backendURL/api/group/del/$idGroup";
       await http.delete(Uri.parse(url.toString()), headers: header);
     } catch (e) {
       print("Loi: $e");
@@ -77,7 +77,7 @@ class GroupProvider {
     try {
       var body = {"groupId": idGroup, "username": username};
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/member-group/post";
+      var url = "$backendURL/api/member-group/post";
       var response = await http.post(
         Uri.parse(url.toString()),
         headers: header,
@@ -97,7 +97,7 @@ class GroupProvider {
   static Future<List<GroupMemberModel>> getListStudentForGroup({required int groupId, required String classId}) async {
     List<GroupMemberModel> listData = [];
     try {
-      var url = "$baseUrl/api/member-group/get/page?filter=groupId:$groupId";
+      var url = "$backendURL/api/member-group/get/page?filter=groupId:$groupId";
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
@@ -123,7 +123,7 @@ class GroupProvider {
   static Future<void> deleteMemberGroup(int idMemberGroup) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/member-group/del/$idMemberGroup";
+      var url = "$backendURL/api/member-group/del/$idMemberGroup";
       await http.delete(Uri.parse(url.toString()), headers: header);
     } catch (e) {
       print("Loi: $e");
@@ -135,7 +135,7 @@ class GroupProvider {
     List<GroupModel> listData = [];
     try {
       List<GroupMemberModel> listGroupMemberModel = [];
-      var url = "$baseUrl/api/member-group/get/page?filter=username:'$username'";
+      var url = "$backendURL/api/member-group/get/page?filter=username:'$username'";
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
@@ -145,7 +145,7 @@ class GroupProvider {
         }
       }
       for (var element in listGroupMemberModel) {
-        var urlGroup = "$baseUrl/api/group/get/${element.groupId}";
+        var urlGroup = "$backendURL/api/group/get/${element.groupId}";
         var responseGroup = await http.get(Uri.parse(urlGroup.toString()));
         if (responseGroup.statusCode == 200) {
           var bodyConvert = jsonDecode(responseGroup.body);

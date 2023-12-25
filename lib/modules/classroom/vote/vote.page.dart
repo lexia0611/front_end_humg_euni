@@ -40,7 +40,7 @@ class VotePage extends StatelessWidget {
                       children: [
                         Text(
                           state.voteModel?.title ?? "",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w600),
                         ),
                         for (var index = 0;
@@ -74,7 +74,7 @@ class VotePage extends StatelessWidget {
                           ),
                         const SizedBox(height: 15),
                         Container(
-                            child: (state.voteModel == null && state.isTeacher)
+                            child: (state.isTeacher == true)
                                 ? DottedBorder(
                                     radius: const Radius.circular(15),
                                     child: ButtonNotClickMulti(
@@ -101,7 +101,7 @@ class VotePage extends StatelessWidget {
                                 : null),
                         const SizedBox(height: 15),
                         Center(
-                            child: (state.voteModel == null && state.isTeacher)
+                            child: (state.isTeacher == true)
                                 ? ButtonNotClickMulti(
                                     onTap: () async {
                                       var status = 0;

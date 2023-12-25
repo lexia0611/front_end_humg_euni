@@ -5,9 +5,9 @@ import 'info.message.dart';
 
 class AnotherMessage extends StatelessWidget {
   final MessageModel message;
-  final bool isShowAvar;
+  final bool isShowAvatar;
   final bool isShowTime;
-  const AnotherMessage(this.message, {super.key, required this.isShowAvar, required this.isShowTime});
+  const AnotherMessage(this.message, {super.key, required this.isShowAvatar, required this.isShowTime});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class AnotherMessage extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          if (isShowAvar) Positioned(left: 0, top: 10, child: SizedBox(width: 46, height: 46, child: AvarNormal(avar: message.createUserImage ?? ''))),
+          if (isShowAvatar) Positioned(left: 0, top: 10, child: SizedBox(width: 46, height: 46, child: AvatarNormal(avar: message.createUserImage ?? ''))),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [

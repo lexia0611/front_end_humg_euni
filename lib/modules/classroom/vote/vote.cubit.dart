@@ -22,7 +22,7 @@ class VoteCubit extends Cubit<VoteCubitState> {
     String username = prefs.getString("username") ?? "";
     int? selected;
     var listStudentClass = await ClassroomProvider.getListStudent(classModel.id ?? "");
-    int countstudent = listStudentClass.length;
+    int countStudent = listStudentClass.length;
     var voteModel = await VoteProvider.getVoteModel(classModel.id ?? "");
     List<VoteOptionModel> listOption = [];
     if (voteModel != null) {
@@ -36,7 +36,7 @@ class VoteCubit extends Cubit<VoteCubitState> {
         }
       }
     }
-    emit(state.copyWith(voteModel: voteModel, status: Status.success, listVoteOptionModel: listOption, selected: selected, countStudent: countstudent));
+    emit(state.copyWith(voteModel: voteModel, status: Status.success, listVoteOptionModel: listOption, selected: selected, countStudent: countStudent));
   }
 
   void doneVote() {

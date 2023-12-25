@@ -16,7 +16,7 @@ class BorderTextField extends StatefulWidget {
 }
 
 class _BorderTextFieldState extends State<BorderTextField> {
-  bool showpass = true;
+  bool showPassword = true;
   @override
   void initState() {
     super.initState();
@@ -48,7 +48,7 @@ class _BorderTextFieldState extends State<BorderTextField> {
           child: TextFormField(
             keyboardType: widget.typeKey ?? TextInputType.text,
             controller: widget.controller,
-            obscureText: (widget.isPassword == true) ? showpass : false,
+            obscureText: (widget.isPassword == true) ? showPassword : false,
             maxLines: widget.maxLines ?? 1,
             minLines: widget.minLine ?? 1,
             decoration: InputDecoration(
@@ -64,14 +64,14 @@ class _BorderTextFieldState extends State<BorderTextField> {
               suffixIcon: (widget.isPassword == true)
                   ? IconButton(
                       icon: Icon(
-                        showpass ? Icons.visibility : Icons.visibility_off,
+                        showPassword ? Icons.visibility : Icons.visibility_off,
                         color: Colors.black,
                         size: 22,
                       ),
                       padding: const EdgeInsets.only(bottom: 15),
                       onPressed: () {
                         setState(() {
-                          showpass = !showpass;
+                          showPassword = !showPassword;
                         });
                       },
                     )

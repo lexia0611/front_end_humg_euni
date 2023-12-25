@@ -14,13 +14,15 @@ class ViewAnswer extends StatefulWidget {
   State<ViewAnswer> createState() => _ViewAnswerState();
 }
 
-class _ViewAnswerState extends State<ViewAnswer> with AutomaticKeepAliveClientMixin {
+class _ViewAnswerState extends State<ViewAnswer>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
-    super.build(context); // Ensure that the AutomaticKeepAliveClientMixin is correctly implemented.
+    super.build(
+        context); // Ensure that the AutomaticKeepAliveClientMixin is correctly implemented.
     return BlocBuilder<ViewQuizCubit, ViewQuizCubitState>(
       builder: (context, state) {
         return Container(
@@ -73,7 +75,9 @@ class _ViewAnswerState extends State<ViewAnswer> with AutomaticKeepAliveClientMi
                         ),
                       ],
                       rows: [
-                        for (int index = 0; index < state.listStudent.length; index++)
+                        for (int index = 0;
+                            index < state.listStudent.length;
+                            index++)
                           DataRow(cells: [
                             DataCell(Text(
                               '${index + 1}',
@@ -88,21 +92,42 @@ class _ViewAnswerState extends State<ViewAnswer> with AutomaticKeepAliveClientMi
                             for (var i = 0; i < state.listQuestion.length; i++)
                               DataCell(
                                 Text(
-                                  (state.listAnser[index] != null && state.listAnser[index]?.anserConvert[i] != null) ? "${state.listAnser[index]?.anserConvert[i] ?? ""}" : '',
+                                  (state.listAnswer[index] != null &&
+                                          state.listAnswer[index]
+                                                  ?.answerConvert[i] !=
+                                              null)
+                                      ? (state.listAnswer[index]
+                                                  ?.answerConvert[i] ==
+                                              1
+                                          ? 'A'
+                                          : (state.listAnswer[index]
+                                                      ?.answerConvert[i] ==
+                                                  2
+                                              ? 'B'
+                                              : (state.listAnswer[index]
+                                                          ?.answerConvert[i] ==
+                                                      3
+                                                  ? 'C'
+                                                  : 'D')))
+                                      : '',
                                   style: TextStyle(fontSize: 13),
                                 ),
                               ),
-                            DataCell(state.listAnser[index] != null
+                            DataCell(state.listAnswer[index] != null
                                 ? TextField(
                                     keyboardType: TextInputType.number,
-                                    controller: TextEditingController(text: "${state.listAnser[index]!.point ?? ""}"),
+                                    controller: TextEditingController(
+                                        text:
+                                            "${state.listAnswer[index]!.point ?? ""}"),
                                     onChanged: (value) async {
                                       var point = int.tryParse(value);
                                       if (point != null) {
-                                        var anserModel = state.listAnser[index];
-                                        if (anserModel != null) {
-                                          anserModel.point = point;
-                                          await QuizProvider.updateAnser(quizAnserModel:anserModel);
+                                        var answerModel =
+                                            state.listAnswer[index];
+                                        if (answerModel != null) {
+                                          answerModel.point = point;
+                                          await QuizProvider.updateAnswer(
+                                              quizAnserModel: answerModel);
                                         }
                                       }
                                     },

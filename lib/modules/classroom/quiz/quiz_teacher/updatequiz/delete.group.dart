@@ -10,7 +10,7 @@ class DeleteQuiz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Comfirm delete", style: TextStyle(fontSize: 20)),
+      title: const Text("Confirm delete", style: TextStyle(fontSize: 20)),
       content: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Text("Delete: ${quizModel.title ?? ""}"),

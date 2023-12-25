@@ -29,7 +29,7 @@ class QuizProvider {
 
     List<QuizModel> listData = [];
     try {
-      var url = "$baseUrl/api/quiz/get/page?filter=classId:'$classId'$filterStatus&sort=status,desc&sort=startTime";
+      var url = "$backendURL/api/quiz/get/page?filter=classId:'$classId'$filterStatus&sort=status,desc&sort=startTime";
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
@@ -53,7 +53,7 @@ class QuizProvider {
 
     List<QuizModel> listData = [];
     try {
-      var url = "$baseUrl/api/quiz/get/page?filter=classId:'$classId'$filterStatus&sort=status,desc&sort=startTime";
+      var url = "$backendURL/api/quiz/get/page?filter=classId:'$classId'$filterStatus&sort=status,desc&sort=startTime";
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -61,8 +61,8 @@ class QuizProvider {
         var bodyConvert = jsonDecode(response.body);
         for (var element in bodyConvert['content']) {
           QuizModel item = QuizModel.fromMap(element);
-          var answer = await getAnser(idQuiz: item.id ?? 0, username: username ?? "");
-          item.quizAnserModel = answer;
+          var answer = await getAnswer(idQuiz: item.id ?? 0, username: username ?? "");
+          item.quizAnswerModel = answer;
           listData.add(item);
         }
       }
@@ -75,7 +75,7 @@ class QuizProvider {
   static Future<bool> create(QuizModel quizModel, List<QuestionQuizModel> listQuestion) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/quiz/post";
+      var url = "$backendURL/api/quiz/post";
       var responseQuiz = await http.post(Uri.parse(url.toString()), headers: header, body: quizModel.toJson());
       if (responseQuiz.statusCode == 200) {
         var bodyConvert = jsonDecode(responseQuiz.body);
@@ -85,7 +85,7 @@ class QuizProvider {
           element.quizId = quizModelConvert.id;
           print("element: ${element.toMap()}");
           if (element.question != null && element.question != "" && element.quizId != null) {
-            var urlQuestion = "$baseUrl/api/question-quiz/post";
+            var urlQuestion = "$backendURL/api/question-quiz/post";
             await http.post(Uri.parse(urlQuestion.toString()), headers: header, body: element.toJson());
           }
         }
@@ -102,7 +102,7 @@ class QuizProvider {
   static Future<bool> update(QuizModel quizModel, List<QuestionQuizModel> listQuestion) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/quiz/put/${quizModel.id}";
+      var url = "$backendURL/api/quiz/put/${quizModel.id}";
       var responseQuiz = await http.put(Uri.parse(url.toString()), headers: header, body: quizModel.toJson());
       print("responseQuiz.statusCode ${responseQuiz.statusCode}");
       if (responseQuiz.statusCode == 200) {
@@ -110,10 +110,10 @@ class QuizProvider {
           element.quizId = quizModel.id ?? 0;
           if (element.question != null && element.question != "" && element.quizId != null) {
             if (element.id == null) {
-              var urlQuestion = "$baseUrl/api/question-quiz/post";
+              var urlQuestion = "$backendURL/api/question-quiz/post";
               await http.post(Uri.parse(urlQuestion.toString()), headers: header, body: element.toJson());
             } else {
-              var urlQuestion = "$baseUrl/api/question-quiz/put/${element.id}";
+              var urlQuestion = "$backendURL/api/question-quiz/put/${element.id}";
               await http.put(Uri.parse(urlQuestion.toString()), headers: header, body: element.toJson());
             }
           }
@@ -131,7 +131,7 @@ class QuizProvider {
   static delete(int index) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/quiz/del/$index";
+      var url = "$backendURL/api/quiz/del/$index";
       await http.delete(Uri.parse(url.toString()), headers: header);
     } catch (e) {
       print("Loi: $e");
@@ -141,7 +141,7 @@ class QuizProvider {
   static deleteQuestion({int? id}) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/question-quiz/del/$id";
+      var url = "$backendURL/api/question-quiz/del/$id";
       await http.delete(Uri.parse(url.toString()), headers: header);
     } catch (e) {
       print("Loi: $e");
@@ -152,7 +152,7 @@ class QuizProvider {
   static Future<List<QuestionQuizModel>> getListQuestion({required int idQuiz}) async {
     List<QuestionQuizModel> listData = [];
     try {
-      var url = "$baseUrl/api/question-quiz/get/page?filter=quizId:$idQuiz&sort=id";
+      var url = "$backendURL/api/question-quiz/get/page?filter=quizId:$idQuiz&sort=id";
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
@@ -168,15 +168,15 @@ class QuizProvider {
   }
 
 //get answer
-  static Future<QuizAnserModel?> getAnser({required int idQuiz, required String username}) async {
-    QuizAnserModel? listData;
+  static Future<QuizAnswerModel?> getAnswer({required int idQuiz, required String username}) async {
+    QuizAnswerModel? listData;
     try {
-      var url = "$baseUrl/api/anser-quiz/get/page?filter=quizId:$idQuiz and username:'$username'";
+      var url = "$backendURL/api/anser-quiz/get/page?filter=quizId:$idQuiz and username:'$username'";
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
         for (var element in bodyConvert['content']) {
-          QuizAnserModel item = QuizAnserModel.fromMap(element);
+          QuizAnswerModel item = QuizAnswerModel.fromMap(element);
           listData = item;
         }
       }
@@ -186,11 +186,11 @@ class QuizProvider {
     return listData;
   }
 
-  static Future<bool> sendAnser({required int idQuiz, required String username, required String anser}) async {
+  static Future<bool> sendAnswer({required int idQuiz, required String username, required String anser}) async {
     try {
       Map<String, String> header = await getHeader();
       var body = {"quizId": idQuiz, "username": username, "anser": anser};
-      var url = "$baseUrl/api/anser-quiz/post";
+      var url = "$backendURL/api/anser-quiz/post";
       await http.post(Uri.parse(url.toString()), headers: header, body: json.encode(body));
       return true;
     } catch (e) {
@@ -199,10 +199,10 @@ class QuizProvider {
     }
   }
 
-  static Future<bool> updateAnser({required QuizAnserModel quizAnserModel}) async {
+  static Future<bool> updateAnswer({required QuizAnswerModel quizAnserModel}) async {
     try {
       Map<String, String> header = await getHeader();
-      var url = "$baseUrl/api/anser-quiz/put/${quizAnserModel.id}";
+      var url = "$backendURL/api/anser-quiz/put/${quizAnserModel.id}";
       await http.put(Uri.parse(url.toString()), headers: header, body: quizAnserModel.toJson());
       return true;
     } catch (e) {

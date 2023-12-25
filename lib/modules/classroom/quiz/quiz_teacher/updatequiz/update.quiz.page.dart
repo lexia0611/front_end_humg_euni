@@ -4,7 +4,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fe/app/widgets/button.not.click.multi.dart';
 import 'package:fe/app/widgets/pick.date.dart';
-import 'package:fe/app/widgets/textfiel.dart';
+import 'package:fe/app/widgets/textfield.dart';
 import 'package:fe/app/widgets/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,7 +78,7 @@ class _UpdateQuizPageState extends State<UpdateQuizPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  TextFielWidget(
+                  TextFieldWidget(
                     title: 'Title',
                     controller: context.read<UpdateQuizCubit>().title,
                     maxLine: 1,
@@ -177,7 +177,7 @@ class _UpdateQuizPageState extends State<UpdateQuizPage> {
                                   child: Icon(Icons.remove))
                             ],
                           ),
-                          TextFielWidget(
+                          TextFieldWidget(
                             title: 'Question ${i + 1}',
                             maxLine: 1,
                             controller: TextEditingController(text: state.listQuestion[i].question ?? ""),
@@ -189,7 +189,7 @@ class _UpdateQuizPageState extends State<UpdateQuizPage> {
                             },
                           ),
                           const SizedBox(height: 10),
-                          TextFielWidget(
+                          TextFieldWidget(
                             title: 'Option 1',
                             styleTitle: TextStyle(fontSize: 13),
                             maxLine: 1,
@@ -200,7 +200,7 @@ class _UpdateQuizPageState extends State<UpdateQuizPage> {
                             },
                           ),
                           const SizedBox(height: 10),
-                          TextFielWidget(
+                          TextFieldWidget(
                             title: 'Option 2',
                             styleTitle: TextStyle(fontSize: 13),
                             maxLine: 1,
@@ -211,7 +211,7 @@ class _UpdateQuizPageState extends State<UpdateQuizPage> {
                             },
                           ),
                           const SizedBox(height: 10),
-                          TextFielWidget(
+                          TextFieldWidget(
                             title: 'Option 3',
                             styleTitle: TextStyle(fontSize: 13),
                             maxLine: 1,
@@ -222,7 +222,7 @@ class _UpdateQuizPageState extends State<UpdateQuizPage> {
                             },
                           ),
                           const SizedBox(height: 10),
-                          TextFielWidget(
+                          TextFieldWidget(
                             title: 'Option 4',
                             styleTitle: TextStyle(fontSize: 13),
                             maxLine: 1,

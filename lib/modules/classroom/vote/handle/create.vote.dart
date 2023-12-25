@@ -1,5 +1,5 @@
 // ignore_for_file: use_build_context_synchronously, prefer_const_constructors, prefer_typing_uninitialized_variables
-import 'package:fe/app/widgets/textfiel.dart';
+import 'package:fe/app/widgets/textfield.dart';
 import 'package:fe/model/class.model.dart';
 import 'package:fe/model/vote.model.dart';
 import 'package:fe/provider/vote.provider.dart';
@@ -26,7 +26,7 @@ class _CreateVoteState extends State<CreateVote> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              TextFielWidget(
+              TextFieldWidget(
                 title: 'Title',
                 controller: name,
                 // maxLine: 1,

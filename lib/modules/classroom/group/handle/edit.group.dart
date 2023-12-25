@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:fe/app/widgets/textfiel.dart';
+import 'package:fe/app/widgets/textfield.dart';
 import 'package:fe/model/group.model.dart';
 import 'package:fe/provider/file.provider.dart';
 import 'package:fe/provider/group.provider.dart';
@@ -63,7 +63,7 @@ class _EditGroupState extends State<EditGroup> {
                     var fileName = await handleUploadFileAll();
                     if (fileName != null) {
                       setState(() {
-                        groupModel.avatar = "$baseUrl/api/files/$fileName";
+                        groupModel.avatar = "$backendURL/api/files/$fileName";
                       });
                     }
                   },
@@ -76,13 +76,13 @@ class _EditGroupState extends State<EditGroup> {
                 ),
               ),
               const SizedBox(height: 15),
-              TextFielWidget(
+              TextFieldWidget(
                 title: 'Tên',
                 controller: name,
                 maxLine: 1,
               ),
               const SizedBox(height: 15),
-              TextFielWidget(
+              TextFieldWidget(
                 title: 'Mô tả',
                 controller: description,
                 maxLine: 2,

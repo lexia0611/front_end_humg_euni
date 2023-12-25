@@ -20,7 +20,7 @@ class ListChatCubit extends Cubit<ListLoadState<MessageModel>> {
     startStreamComment();
   }
   startStreamComment() async {
-    await getListComment();
+    await getListMessage();
     _streamMessage = ChatProvider().messageStream(classModel.id.toString()).listen((event) async {
       if (isFirst) {
         isFirst = false;
@@ -28,6 +28,11 @@ class ListChatCubit extends Cubit<ListLoadState<MessageModel>> {
         emit(state.copyWith(list: [event, ...state.list]));
       }
     });
+  }
+
+  Future<void> getListMessage() async {
+    var listChat = await ChatProvider().getMessAll(classModel.id ?? "", true);
+    emit(state.copyWith(list: listChat));
   }
 
   void edit(int id, String message, MessageModel messageModel) {
@@ -47,10 +52,7 @@ class ListChatCubit extends Cubit<ListLoadState<MessageModel>> {
     emit(state.copyWith(list: list, status: ListLoadStatus.success));
   }
 
-  Future<void> getListComment() async {
-    var listChat = await ChatProvider().getMessAll(classModel.id ?? "", true);
-    emit(state.copyWith(list: listChat));
-  }
+
 
   @override
   Future<void> close() async {

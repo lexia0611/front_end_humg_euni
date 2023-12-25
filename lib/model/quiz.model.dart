@@ -11,7 +11,7 @@ class QuizModel {
   String? endTime;
   String? createTime;
   int? status;
-  QuizAnserModel? quizAnserModel;
+  QuizAnswerModel? quizAnswerModel;
   QuizModel({
     this.id,
     this.classId,
@@ -20,7 +20,7 @@ class QuizModel {
     this.endTime,
     this.createTime,
     this.status,
-    this.quizAnserModel,
+    this.quizAnswerModel,
   });
 
   QuizModel copyWith({

@@ -19,11 +19,10 @@ class ChatProvider {
     try {
       var url = "";
       if (isClass) {
-        url = "$baseUrl/api/message/get/page?filter=classId:'$id'";
+        url = "$backendURL/api/message/get/page?filter=classId:'$id'";
       } else {
-        url = "$baseUrl/api/message/get/page?filter=groupId:$id";
+        url = "$backendURL/api/message/get/page?filter=groupId:$id";
       }
-      print(url);
       var response = await http.get(Uri.parse(url.toString()));
       if (response.statusCode == 200) {
         var bodyConvert = jsonDecode(response.body);
@@ -41,9 +40,9 @@ class ChatProvider {
     return listData;
   }
 
-  Stream<MessageModel> messageStream(String idClasroom) {
+  Stream<MessageModel> messageStream(String idClassroom) {
     return _groupCollection
-        .doc(idClasroom)
+        .doc(idClassroom)
         .collection('message')
         .orderBy("createTime", descending: true)
         .limit(1)
@@ -65,10 +64,10 @@ class ChatProvider {
     });
   }
 
-  Stream<MessageModel> messageGroupStream(String idClasroom) {
+  Stream<MessageModel> messageGroupStream(String idClassroom) {
     return FirebaseFirestore.instance
         .collection('group')
-        .doc(idClasroom)
+        .doc(idClassroom)
         .collection('message')
         .orderBy("createTime", descending: true)
         .limit(1)
@@ -146,7 +145,7 @@ class ChatProvider {
         createUserName: name ?? "",
         createUserImage: "",
         type: "image",
-        linkFile: "$baseUrl/api/files/$fileName",
+        linkFile: "$backendURL/api/files/$fileName",
         fileName: fileName,
       );
       //luu vao database
@@ -189,7 +188,7 @@ class ChatProvider {
         createUserName: name ?? "",
         createUserImage: "",
         type: "file",
-        linkFile: "$baseUrl/api/files/$fileName",
+        linkFile: "$backendURL/api/files/$fileName",
         fileName: fileName,
       );
       //luu vao database
@@ -221,22 +220,21 @@ class ChatProvider {
   Future<int?> saveMessToDB(MessageModel messageModel, bool isClass) async {
     int? value;
     try {
-      var url = "$baseUrl/api/message/post";
+      var url = "$backendURL/api/message/post";
       await http.post(
         Uri.parse(url.toString()),
         headers: {'Content-type': 'application/json'},
         body: (isClass) ? messageModel.toJsonClass() : messageModel.toJsonGroup(),
       );
     } catch (e) {
-      print("Loi234: $e");
+      print("Error: $e");
     }
-
     return value;
   }
 
   deleteMess(int id) async {
     try {
-      var url = "$baseUrl/api/message/del/$id";
+      var url = "$backendURL/api/message/del/$id";
       await http.delete(Uri.parse(url.toString()), headers: {'Content-type': 'application/json'});
     } catch (e) {
       print("Loi: $e");
@@ -244,7 +242,7 @@ class ChatProvider {
   }
 
   void editMess(MessageModel messageModel, bool isClass) async {
-    var url = "$baseUrl/api/message/put/${messageModel.id}";
+    var url = "$backendURL/api/message/put/${messageModel.id}";
     await http.put(Uri.parse(url.toString()), headers: {'Content-type': 'application/json'}, body: (isClass) ? messageModel.toJsonClass() : messageModel.toJsonGroup());
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class AvarNormal extends StatelessWidget {
+class AvatarNormal extends StatelessWidget {
   final String? avar;
   final bool isCircle;
-  const AvarNormal({super.key, required this.avar, this.isCircle = true});
+  const AvatarNormal({super.key, required this.avar, this.isCircle = true});
 
   @override
   Widget build(BuildContext context) {

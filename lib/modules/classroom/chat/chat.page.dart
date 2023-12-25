@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
-
 import 'package:fe/app/widgets/button.not.click.multi.dart';
 import 'package:fe/app/widgets/list.load.state.dart';
 import 'package:fe/model/class.model.dart';
@@ -54,7 +52,7 @@ class ChatPage extends StatelessWidget {
                               var isShowAvar = true;
                               return AnotherMessage(
                                 message,
-                                isShowAvar: isShowAvar,
+                                isShowAvatar: isShowAvar,
                                 isShowTime: true,
                                 key: ValueKey('another${message.id}'),
                               );

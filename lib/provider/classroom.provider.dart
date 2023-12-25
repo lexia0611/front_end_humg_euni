@@ -1,11 +1,9 @@
 // ignore_for_file: unnecessary_string_interpolations, unnecessary_brace_in_string_interps
 
 import 'dart:convert';
-
 import 'package:fe/model/sinh.vien.model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-
 import '../model/class.model.dart';
 
 class ClassroomProvider {
@@ -53,8 +51,7 @@ class ClassroomProvider {
     return listDataGet;
   }
 
-
-  //Get list lo hoc
+  //Get list to hoc
   static Future<List<ClassModel>> getListClass(int hocKy, int loaidoiTuong) async {
     List<ClassModel> listDataGet = [];
     try {

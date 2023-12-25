@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:fe/model/sinh.vien.model.dart';
 import 'package:flutter/material.dart';
 
@@ -24,8 +22,9 @@ class ViewSinhvien extends StatelessWidget {
         ),
         title: const Text(
           "Student details",
-          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600),
+          style: TextStyle(color: Colors.white),
         ),
+        centerTitle: false,
       ),
       body: Container(
         padding: const EdgeInsets.all(15),
@@ -89,7 +88,7 @@ class FieldTextWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Text(
               title,
               style: const TextStyle(

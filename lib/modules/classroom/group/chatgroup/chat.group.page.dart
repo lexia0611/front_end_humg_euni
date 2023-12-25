@@ -135,7 +135,7 @@ class _ChatGroupScreenState extends State<ChatGroupScreen> {
                                 var isShowAvar = true;
                                 return AnotherMessage(
                                   message,
-                                  isShowAvar: isShowAvar,
+                                  isShowAvatar: isShowAvar,
                                   isShowTime: true,
                                   key: ValueKey('another${message.id}'),
                                 );

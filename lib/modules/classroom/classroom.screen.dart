@@ -1,20 +1,18 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:fe/model/class.model.dart';
-import 'package:fe/modules/classroom/assigment/assigment_student/assigment.student.cubit.dart';
-import 'package:fe/modules/classroom/assigment/assigment_student/assigment.student.page.dart';
-import 'package:fe/modules/classroom/assigment/assigment_teacher/assgment.techer.cubit.dart';
+import 'package:fe/modules/classroom/assignment/assignment_student/assignment.student.cubit.dart';
+import 'package:fe/modules/classroom/assignment/assignment_student/assignment.student.page.dart';
+import 'package:fe/modules/classroom/assignment/assignment_teacher/assignment.teacher.cubit.dart';
 import 'package:fe/modules/classroom/chat/chat.cubit.dart';
 import 'package:fe/modules/classroom/chat/chat.page.dart';
 import 'package:fe/modules/classroom/quiz/quiz_student/quiz.student.cubit.dart';
 import 'package:fe/modules/classroom/quiz/quiz_student/quiz.student.page.dart';
-import 'package:fe/modules/classroom/quiz/quiz_teacher/quiz.techer.cubit.dart';
-import 'package:fe/modules/classroom/quiz/quiz_teacher/quiz.techer.page.dart';
+import 'package:fe/modules/classroom/quiz/quiz_teacher/quiz.teacher.cubit.dart';
+import 'package:fe/modules/classroom/quiz/quiz_teacher/quiz.teacher.page.dart';
 import 'package:fe/modules/classroom/vote/vote.cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'assigment/assigment_teacher/assgment.techer.page.dart';
+import 'assignment/assignment_teacher/assignment.teacher.page.dart';
 import 'chat/list.chat.cubit.dart';
 import 'group/group.cubit.dart';
 import 'group/group.page.dart';
@@ -74,7 +72,7 @@ class _ClassRoomScreenState extends State<ClassRoomScreen> {
                 ),
               );
             },
-            child: Icon(
+            child: const Icon(
               Icons.group,
               size: 30,
               color: Colors.white,
@@ -195,17 +193,17 @@ class _ClassRoomScreenState extends State<ClassRoomScreen> {
                       ? MultiBlocProvider(
                           providers: [
                               BlocProvider(
-                                create: (context) => AssigmentTeacherCubit(classModel: widget.classModel),
+                                create: (context) => AssignmentTeacherCubit(classModel: widget.classModel),
                               ),
                             ],
-                          child: AssigmentTeacherPage(
+                          child: AssignmentTeacherPage(
                             classModel: widget.classModel,
                           ))
                       : MultiBlocProvider(providers: [
                           BlocProvider(
-                            create: (context) => AssigmentStudentCubit(classModel: widget.classModel),
+                            create: (context) => AssignmentStudentCubit(classModel: widget.classModel),
                           ),
-                        ], child: AssigmentStudentPage()),
+                        ], child: AssignmentStudentPage()),
                   widget.isTeacher
                       ? MultiBlocProvider(
                           providers: [
